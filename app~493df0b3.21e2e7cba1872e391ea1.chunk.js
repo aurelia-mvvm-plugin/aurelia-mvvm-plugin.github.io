@@ -1335,9 +1335,8 @@ var CategoriesValueConverter = (function () {
 // Imports
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "JPst");
 exports = ___CSS_LOADER_API_IMPORT___(false);
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap);"]);
 // Module
-exports.push([module.i, "body {\n  font-family: 'Roboto', sans-serif;\n  font-weight: 300;\n}\n\nbody {\n  background: var(--aurelia-ux--design-app-background);\n  color: var(--aurelia-ux--design-app-foreground);\n\n}\n\nsection {\n  max-width: 1024px;\n  margin: 0px auto;\n  padding: 20px 20px 40px 20px;\n}\n\nheader.main-header {\n  position: absolute;\n  top: 0;\n  left: 260px;\n  right: 0;\n  height: 70px;\n  display: flex;\n  align-content: center;\n  align-items: center;\n  justify-content: center;\n  padding: 8px 16px;\n  box-shadow: var(--aurelia-ux--design-elevation4dp);\n  background-color: var(--ux-swatch--grey-p200);\n  color: var(--ux-swatch--grey-p900);\n  z-index: 1;\n}\n\nheader.main-header > * {\n  margin-right: 16px;\n}\n\nheader.main-header > ux-chip {\n  cursor: pointer;\n}\n\nheader.main-header > ux-chip.theme-toggler {\n  justify-self: flex-end;\n}\n\nrouter-view.page {\n  position: absolute;\n  top: 70px;\n  left: 260px;\n  right: 0;\n  bottom: 0;\n  overflow-x: hidden;\n  overflow-y: scroll;\n  padding: 16px;\n}\n", ""]);
+exports.push([module.i, "* {\n  box-sizing: border-box;\n}\n\nhtml,\nbody {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  font-family: 'Source Sans Pro', sans-serif;\n  font-size: 16px;\n  line-height: 1.5;\n  background-color: #FAFAFA;\n  background-color: var(--aurelia-ux--design-app-background, #FAFAFA);\n  color: #212121;\n  color: var(--aurelia-ux--design-app-foreground, #212121);\n}\n\nbody {\n  display: flex;\n  flex-direction: row;\n}\n\nul, ol {\n  list-style: initial;\n  padding-left: 32px;\n}\n\ncode {\n  font-family: 'Source Code Pro', monospace;\n}\n\nem {\n  font-style: italic;\n}\n\nmain {\n  display: flex;\n  flex-direction: column;\n  flex: 1;\n}\n\np {\n  margin-bottom: 16px;\n}\n\nh1, h2, h3, h4, h4, h5, h6 {\n  margin: 16px 0;\n}\n\nh1.section-title {\n  margin: 0;\n  margin-bottom: 16px;\n}\n\nh1, h2, h3 {\n  font-weight: 300;\n}\n\nh1 {\n  font-size: 38px;\n}\n\nh2 {\n  font-size: 32px;\n}\n\nh3 {\n  font-size: 28px;\n}\n\nh4 {\n  font-size: 24px;\n}\n\nh5 {\n  font-size: 22px;\n}\n\nh6 {\n  font-size: 18px;\n}\n\nstrong {\n  font-weight: 600;\n}\n\nsmall {\n  font-size: 14px;\n}\n\n.page {\n  overflow-y: scroll;\n  flex: 1;\n}\n\n.component-demo {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  min-height: 124px;\n  padding: 16px;\n  background-color: #00000010;\n}\n\ntable.attribute-table {\n  min-width: 400px;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -1352,9 +1351,27 @@ module.exports = exports;
 /***/ (function(module, exports, __webpack_require__) {
 
 // Module
-var code = "<template>\n<require from=\"./app.css\"></require>\n<require from=\"resources/elements/layout/sidebar/sidebar\"></require>\n\n<sidebar></sidebar>\n\n<!-- <ux-drawer type=\"permanent\">\n  <header>\n    <a href=\"/getting-started\" style=\"max-width: 90px; width: 100%;\">\n      \n      <h1>Aurelia UX</h1>\n    </a>\n  </header>\n  <ux-list class=\"drawer-menu\">\n    <template repeat.for=\"[category, routes] of router.navigation | categories\">\n      <div class=\"ux-list-item header\">\n        ${category.title}\n      </div>\n      <div class=\"ux-list-item ${nav.isActive ? 'active' : ''}\" repeat.for=\"nav of routes\">\n        <a class=\"list-content\" href.bind=\"nav.href\">\n          ${nav.title}\n        </a>\n      </div>\n    </template>\n  </ux-list>\n</ux-drawer> -->\n\n<main>\n  <ux-toolbar>\n    <div class=\"toolbar-row\">\n      <span class=\"title\">\n        ${router.currentInstruction.config.navModel.title}\n      </span>\n      <span class=\"spacer\"></span>\n      <!-- <span click.delegate=\"toggleTheme()\" style=\"cursor: pointer;\">Toggle Theme</span> -->\n    </div>\n  </ux-toolbar>\n\n  <router-view class=\"page\"></router-view>\n</main>\n</template>\n";
+var code = "<template>\n<require from=\"./app.css\"></require>\n<require from=\"./common.css\"></require>\n<require from=\"resources/elements/layout/sidebar/sidebar\"></require>\n\n<sidebar></sidebar>\n\n<!-- <ux-drawer type=\"permanent\">\n  <header>\n    <a href=\"/getting-started\" style=\"max-width: 90px; width: 100%;\">\n      \n      <h1>Aurelia UX</h1>\n    </a>\n  </header>\n  <ux-list class=\"drawer-menu\">\n    <template repeat.for=\"[category, routes] of router.navigation | categories\">\n      <div class=\"ux-list-item header\">\n        ${category.title}\n      </div>\n      <div class=\"ux-list-item ${nav.isActive ? 'active' : ''}\" repeat.for=\"nav of routes\">\n        <a class=\"list-content\" href.bind=\"nav.href\">\n          ${nav.title}\n        </a>\n      </div>\n    </template>\n  </ux-list>\n</ux-drawer> -->\n\n<main>\n  <ux-toolbar>\n    <div class=\"toolbar-row\">\n      <span class=\"title\">\n        ${router.currentInstruction.config.navModel.title}\n      </span>\n      <span class=\"spacer\"></span>\n      <span click.delegate=\"toggleTheme()\" style=\"cursor: pointer;\">Toggle Theme</span>\n    </div>\n  </ux-toolbar>\n\n  <router-view class=\"page\"></router-view>\n</main>\n</template>\n";
 // Exports
 module.exports = code;
+
+/***/ }),
+
+/***/ "common.css":
+/*!************************!*\
+  !*** ./src/common.css ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "JPst");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, "header {\n  font-size: 34px;\n  font-weight: 400;\n  line-height: 32px;\n  margin-bottom: 30px;\n  color: var(--aurelia-ux--design-primary);\n}\n\n.description {\n  font-size: 20px;\n  font-weight: 400;\n  line-height: 32px;\n  max-width: 940px;\n  color: var(--ux-swatch--black);\n  margin-bottom: 40px;\n}\n", ""]);
+// Exports
+module.exports = exports;
+
 
 /***/ }),
 
@@ -2515,7 +2532,7 @@ var ___HTML_LOADER_GET_SOURCE_FROM_IMPORT___ = __webpack_require__(/*! ../../../
 var ___HTML_LOADER_IMPORT_0___ = __webpack_require__(/*! ../../../../../images/aurelia-icon-128x128.png */ "13mn");
 // Module
 var ___HTML_LOADER_REPLACER_0___ = ___HTML_LOADER_GET_SOURCE_FROM_IMPORT___(___HTML_LOADER_IMPORT_0___);
-var code = "<template>\n  <require from=\"./sidebar.css\"></require>\n  <require from=\"./sidebar-menu-group\"></require>\n  <require from=\"./sidenav-categories\"></require>\n\n  <ux-drawer ref=\"drawer\" type=\"permanent\" position=\"left\" collapsible=\"partial\" open.bind=\"open\" class=\"app-drawer\">\n\n    <header>\n      <span class=\"logo\">\n        <img style=\"margin-right: 10px; height: 40px;\" src=\"" + ___HTML_LOADER_REPLACER_0___ + "\">\n        \n        <span class=\"ux-drawer__hide-on-collapse\">Aurelia MVVM Plugin</span>\n      </span>\n    </header>\n\n    <div class=\"drawer-menu drawer-menu--expanding\">\n      <template repeat.for=\"[category, routes] of router.navigation | sidenavCategories\">\n\n        <sidebar-menu-group category.bind=\"category\" if.bind=\"category != null\">\n          <span slot=\"sub-routes\">\n            <template repeat.for=\"route of routes\">\n              <template if.bind=\"!route.settings.hideFromSummary\">\n                ${route.title},\n              </template>\n            </template>\n          </span>\n          <a slot=\"content\" class=\"${route.isActive ? 'active' : ''} sidebar-menu-group__details-anchor\" href.bind=\"route.href\" repeat.for=\"route of routes\">\n            ${route.title}\n          </a>\n        </sidebar-menu-group>\n\n        <template if.bind=\"!category\">\n          <a class=\"${route.isActive ? 'active' : ''} sidebar-menu__anchor\" href.bind=\"route.href | routeParser\" repeat.for=\"route of routes\">\n            ${route.title}\n          </a>\n        </template>\n\n      </template>\n    </div>\n  </ux-drawer>\n</template>\n";
+var code = "<template>\n  <require from=\"./sidebar.css\"></require>\n  <require from=\"./sidebar-menu-group\"></require>\n  <require from=\"./sidenav-categories\"></require>\n\n  <ux-drawer ref=\"drawer\" type=\"temporary\" position=\"left\" collapsible=\"partial\" open.bind=\"open\" class=\"app-drawer\">\n\n    <header>\n      <span class=\"logo\">\n        <img style=\"margin-right: 10px; height: 40px;\" src=\"" + ___HTML_LOADER_REPLACER_0___ + "\">\n        <span class=\"ux-drawer__hide-on-collapse\">Aurelia MVVM</span>\n      </span>\n    </header>\n\n    <div class=\"drawer-menu drawer-menu--expanding\">\n      <template repeat.for=\"[category, routes] of router.navigation | sidenavCategories\">\n\n        <sidebar-menu-group category.bind=\"category\" if.bind=\"category != null\">\n          <span slot=\"sub-routes\">\n            <template repeat.for=\"route of routes\">\n              <template if.bind=\"!route.settings.hideFromSummary\">\n                ${route.title},\n              </template>\n            </template>\n          </span>\n          <a slot=\"content\" class=\"${route.isActive ? 'active' : ''} sidebar-menu-group__details-anchor\" href.bind=\"route.href\" repeat.for=\"route of routes\">\n            ${route.title}\n          </a>\n        </sidebar-menu-group>\n\n        <template if.bind=\"!category\">\n          <a class=\"${route.isActive ? 'active' : ''} sidebar-menu__anchor\" href.bind=\"route.href | routeParser\" repeat.for=\"route of routes\">\n            ${route.title}\n          </a>\n        </template>\n\n      </template>\n    </div>\n  </ux-drawer>\n</template>\n";
 // Exports
 module.exports = code;
 
@@ -2683,6 +2700,7 @@ var UxToolbar = (function () {
         this.element = element;
         this.eventAggregator = eventAggregator;
         this.styleEngine = styleEngine;
+        this.theme = new _ux_toolbar_theme__WEBPACK_IMPORTED_MODULE_4__["UxToolbarTheme"]();
         this.isNavigating = false;
         this.subscriber = {};
     }
@@ -2737,7 +2755,7 @@ var UxToolbar = (function () {
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "JPst");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "ux-toolbar {\n  display: flex;\n  flex-direction: column;\n  width: auto;\n  background-color: #333235;\n  background-color: var(--aurelia-ux--toolbar-background, #333235);\n  color: #fff;\n  color: var(--aurelia-ux--toolbar-foreground, #fff);\n  position: relative;\n  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\n  box-shadow: var(--aurelia-ux--toolbar-shadow, var(--ux-design--elevation2dp, 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)));\n}\n\nux-toolbar .toolbar-row {\n  display: flex;\n  height: 72px;\n  align-items: center;\n}\n\nux-toolbar .toolbar-row .title {\n  color: #fff;\n  color: var(--aurelia-ux--toolbar-foreground, #fff);\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  font-size: 26px;\n  font-weight: 300;\n  letter-spacing: .02em;\n  text-decoration: inherit;\n  text-transform: inherit;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n  -ms-flex-item-align: center;\n  margin-left: 24px;\n  margin-right: 16px;\n  line-height: 1.5rem;\n}\n\nux-toolbar .toolbar-row :first-child {\n  margin-left: 16px;\n}\n\nux-toolbar .toolbar-row :last-child {\n  margin-right: 16px;\n}\n\nux-toolbar .toolbar-row .spacer {\n  flex: 1;\n}\n", ""]);
+exports.push([module.i, "ux-toolbar {\n  display: flex;\n  flex-direction: column;\n  width: auto;\n  background-color: #333235;\n  background-color: var(--aurelia-ux--toolbar-background, #333235);\n  color: #fff;\n  color: var(--aurelia-ux--toolbar-foreground, #fff);\n  position: relative;\n  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\n  box-shadow: var(--aurelia-ux--toolbar-shadow, var(--ux-design--elevation2dp, 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)));\n}\n\nux-toolbar .toolbar-row {\n  display: flex;\n  height: 84px;\n  align-items: center;\n}\n\nux-toolbar .toolbar-row .title {\n  color: #fff;\n  color: var(--aurelia-ux--toolbar-foreground, #fff);\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  font-size: 26px;\n  font-weight: 300;\n  letter-spacing: .02em;\n  text-decoration: inherit;\n  text-transform: inherit;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n  -ms-flex-item-align: center;\n  margin-left: 24px;\n  margin-right: 16px;\n  line-height: 1.9rem;\n}\n\nux-toolbar .toolbar-row :first-child {\n  margin-left: 16px;\n}\n\nux-toolbar .toolbar-row :last-child {\n  margin-right: 16px;\n}\n\nux-toolbar .toolbar-row .spacer {\n  flex: 1;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -3266,4 +3284,4 @@ var UxDrawerTheme = (function () {
 /***/ })
 
 },[[0,"runtime~app","vendors~d7efa7cb","vendors~2905546b","vendors~46ff123a","vendors~18b01f04","vendors~62651a14","vendors~5172b010","vendors~e508581e","vendors~0877c396","vendors~7ba93e4b","vendors~fe3d664a","vendors~7ff531ff","vendors~2a42e354","vendors~0ba1d959","vendors~556c66f2","vendors~72fdf3f2","vendors~50e8d500","vendors~ecff2e3d","vendors~9e0f4621","vendors~4eb3b4b8","vendors~399b027d","vendors~e258e298","vendors~d22b72d1","vendors~8eeb4602","vendors~7db804d5","vendors~15f0789d","vendors~cc99a214","vendors~0a56fd24","vendors~f9ca8911"]]]);
-//# sourceMappingURL=app~493df0b3.f16d6f891730e16b82a0.bundle.map
+//# sourceMappingURL=app~493df0b3.21e2e7cba1872e391ea1.bundle.map
